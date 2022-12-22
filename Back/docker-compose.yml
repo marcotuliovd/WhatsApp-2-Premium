@@ -33,7 +33,7 @@ services:
     # na notação porta_de_fora:porta_de_dentro
     ports:
       # Expõe a porta padrão da aplicação: altere aqui caso use outra porta
-      - 3000:3000
+      - 3001:3000
     # Configura as variáveis de ambiente dentro do container
     environment:
       MYSQL_USER: root
@@ -41,14 +41,14 @@ services:
       MYSQL_HOST: db # Nome do service logo abaixo
       JWT_SECRET: secretJWT
       API_HOST: 'node'
-      API_PORT: 3000
+      API_PORT: 3001
       NODE_ENV: 'development'
     networks:
       - whatsapp_api_net
 
   # Serviço que irá rodar o banco de dados
   db:
-    container_name: blogs_api_db
+    container_name: whatsapp_api_db
     image: mysql:8.0.23
     # Indica de forma fixa a plataforma na qual o banco irá rodar
     platform: linux/x86_64
@@ -57,7 +57,7 @@ services:
       # Garanta que não haverá conflitos de porta com um banco que esteja
       # rodando localmente
       - 3309:3306
-      - 33060:33060
+      - 3307:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
     networks:
@@ -65,8 +65,8 @@ services:
 
 # Lista de redes que os containeres irão utilizar
 networks:
-  # Cria rede com nome `blogs_api_net`
-  blogs_api_net:
+  # Cria rede com nome `whatsapp_api_net`
+  whatsapp_api_net:
     # Define o `driver` como `bridge`, que é o driver padrão do docker
     driver: bridge
 
