@@ -29,3 +29,5 @@ module.exports = {
     await queryInterface.dropTable('posts');
   },
 };
+
+// git
