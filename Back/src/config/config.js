@@ -11,7 +11,8 @@ const suffix = {
 const options = {
   host: process.env.MYSQL_HOST || 'localhost',
   port: process.env.MYSQL_PORT || '3306',
-  database: 'Whatsapp2',
+  database: 
+    'whatsapp_api',
   username: process.env.MYSQL_USER || 'root',
   password: process.env.MYSQL_PASSWORD || '1234',
   dialect: 'mysql',

@@ -8,7 +8,13 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       user_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       conteudo: {
         type: Sequelize.STRING,
@@ -18,11 +24,7 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING,
-      },
-      created_at: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {

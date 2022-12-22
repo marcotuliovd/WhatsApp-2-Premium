@@ -26,10 +26,9 @@ module.exports = {
       verification: {
         type: Sequelize.BOOLEAN,
       },
-      created_at: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+      password: {
+        type: Sequelize.STRING,
+      }
     });
   },
   down: async (queryInterface, _Sequelize) => {

@@ -1,24 +1,37 @@
+'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const coment = sequelize.define('coments', {
-    user_id: DataTypes.STRING,
+  const coments = sequelize.define('Coments', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    userId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      foreignKey: true
+    },
     conteudo: DataTypes.STRING,
     curtidas: DataTypes.INTEGER,
-    id_post: DataTypes.INTEGER
+    idPost: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      foreignKey: true
+    },
   }, {
+    timestamps: false,
     sequelize,
-    modelName: 'coments',
     underscored: true,
   });
   coments.associate = (models) => {
-    post.belongsTo(models.User, {
+    coments.belongsTo(models.User, {
       as: 'User',
       foreignKey: 'userId',
-    })
-  }
-  coments.associate = (models) => {
-    post.belongsTo(models.Post, {
+    });
+    coments.belongsTo(models.Post, {
       as: 'Post',
-      foreignKey: 'postId',
+      foreignKey: 'idPost',
     })
   }
   return coments;
